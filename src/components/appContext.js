@@ -3,14 +3,10 @@ import React from 'react';
 export const AppContext = React.createContext();
 
 export function ContainerApp({ children }) {
+
   const [headerMovies, setHeaderMovies] = React.useState(null);
   const [headerMovies2, setHeaderMovies2] = React.useState(null);
 
-  const [trending, setTrending] = React.useState(null);
-  const [moviePopular, setMoviePopular] = React.useState(null);
-  const [movieRated, setMovieRated] = React.useState(null);
-  const [nowPlaying, setNowPlaying] = React.useState(null);
-  const [eachCategory, setEachCategory] = React.useState(null);
 
   const [optionPopular, setOptionPopular] = React.useState(false);
   const [optionTopRated, setOptionTopRated] = React.useState(false);
@@ -60,35 +56,6 @@ export function ContainerApp({ children }) {
     setHeaderMovies2(jsontopRatedTwoPage);
   }
 
-
-  // Function's json
-  const functionJson = async () => {
-    //Trending
-    const trending = await fetch(`${process.env.REACT_APP_MAIN_URL}/trending/all/day?api_key=${process.env.REACT_APP_KEY}`);
-    const jsonTrending = await trending.json();
-    setTrending(jsonTrending);
-
-    //Movies Popular
-    const popularMovie = await fetch(`${process.env.REACT_APP_MAIN_URL}/movie/popular?api_key=${process.env.REACT_APP_KEY}&language=en-US&page=1`);
-    const jsonPopularMovie = await popularMovie.json();
-    setMoviePopular(jsonPopularMovie);
-  
-    //Movies Top Rated
-    const ratedMovie = await fetch(`${process.env.REACT_APP_MAIN_URL}/movie/top_rated?api_key=${process.env.REACT_APP_KEY}&language=en-US&page=1`);
-    const jsonRatedMovie = await ratedMovie.json();
-    setMovieRated(jsonRatedMovie);
-
-    //Now Playing
-    const playingNow = await fetch(`${process.env.REACT_APP_MAIN_URL}/movie/now_playing?api_key=${process.env.REACT_APP_KEY}&language=en-US&page=1`);
-    const jsonPlayingNow = await playingNow.json();
-    setNowPlaying(jsonPlayingNow);
-
-    //Categories
-    const categories = await fetch(`${process.env.REACT_APP_MAIN_URL}/genre/movie/list?api_key=${process.env.REACT_APP_KEY}`); 
-    const jsonCategories = await categories.json();
-    setEachCategory(jsonCategories);
-  }
-
   const clickOneMovie = async (item) => {
     setDescriptionMovie(item)
 
@@ -134,9 +101,7 @@ export function ContainerApp({ children }) {
     setSearhMovie(jsonMovieSearch);
   }
 
-  React.useEffect(() => {
-    functionJson();
-  }, []);
+ 
 
   return (
     <AppContext.Provider value={{
@@ -148,13 +113,6 @@ export function ContainerApp({ children }) {
       headerPopular, 
       headerNowPlaying, 
       headerTopRated,
-
-      trending,
-      setTrending,
-      moviePopular,
-      movieRated,
-      nowPlaying,
-      eachCategory,
 
       optionPopular,
       setOptionPopular,

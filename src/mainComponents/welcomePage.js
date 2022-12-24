@@ -1,5 +1,5 @@
 import React from "react";
-import { AppContext } from "../components/appContext";
+import { useFunctionsJson } from "../hooks/useFunctionsJson";
 import { Carousel } from "../components/carousel";
 import { CarouselTraditional } from "../components/carouselTraditional";
 import { Categories } from "../components/categories";
@@ -13,7 +13,7 @@ export function WelcomePage() {
     moviePopular,
     movieRated,
     nowPlaying,
-  } = React.useContext(AppContext);
+  } = useFunctionsJson();
 
   return (
     <>
