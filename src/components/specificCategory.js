@@ -18,7 +18,6 @@ export function SpecificCategory() {
   } = React.useContext(AppContext);
 
   window.scrollTo(0, 0);
-  
   const navigate = useNavigate();
 
   return (
@@ -26,16 +25,16 @@ export function SpecificCategory() {
       <Header />
       <span onClick={() => navigate(-1)} className='head-arrow'><IoIosArrowBack /> </span>
       <InputSearch />
-      <h2 className="specificCategory-title">{categoryState.name}</h2>
+      <h2 className="specificCategory-title">{categoryState?.name}</h2>
       <div className="specificCategory-movies">
         {
           discoverMovie?.results.map(item => (
             <Link to='/description'>
               <img
-                src={`${process.env.REACT_APP_URL_IMAGE}${item.poster_path}`}
-                alt={item.title}
+                src={`${process.env.REACT_APP_URL_IMAGE}${item?.poster_path}`}
+                alt={item?.title}
                 onClick={() => clickOneMovie(item)}
-                key={item.id}
+                key={item?.id}
               />
             </Link>
           ))
@@ -44,10 +43,10 @@ export function SpecificCategory() {
           discoverMovie2?.results.map(item => (
             <Link to='/description'>
               <img
-                src={`${process.env.REACT_APP_URL_IMAGE}${item.poster_path}`}
-                alt={item.title}
+                src={`${process.env.REACT_APP_URL_IMAGE}${item?.poster_path}`}
+                alt={item?.title}
                 onClick={() => clickOneMovie(item)}
-                key={item.id}
+                key={item?.id}
               />
             </Link>
           ))

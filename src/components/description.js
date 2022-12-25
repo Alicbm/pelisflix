@@ -9,6 +9,7 @@ import { AppContext } from './appContext';
 import { IoIosArrowBack } from 'react-icons/io'
 import { Link, useNavigate } from 'react-router-dom';
 import { Carousel } from './carousel';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
 export function Description(){
   const { 
@@ -17,6 +18,8 @@ export function Description(){
     selectOneCategory,
     moviesRecommendations, 
   } = React.useContext(AppContext);
+
+  const { similarMovies, categoriesStorage } = useLocalStorage();
 
   const styleBackground = {
     background: `linear-gradient(rgba(0 0 0 / 0.9), rgba(0 0 0 / 0.7)), url(https://image.tmdb.org/t/p/original${descriptionMovie.backdrop_path})`,
@@ -30,9 +33,13 @@ export function Description(){
 
   const indexRecommendation = moviesRecommendations.findIndex(item => item?.results);
   const positionRecommendation = moviesRecommendations[indexRecommendation];
-  console.log(detailCategory);
-  const navigate = useNavigate();
+  
+  if(positionRecommendation){
+    localStorage.setItem('recommendations', JSON.stringify(positionRecommendation));
+    localStorage.setItem('category', JSON.stringify(position));
+  }
 
+  const navigate = useNavigate();
   window.scrollTo(0, 0);
 
   return(
@@ -84,9 +91,9 @@ export function Description(){
         </div>
         <div className='overview-workers'>
           {
-            !position?.genres ? ''
+            !categoriesStorage?.genres ? ''
             :
-            position?.genres.map(item => (
+            categoriesStorage?.genres.map(item => (
               <Link to='/category'>
                 <div 
                   className='overview-workers__one' 
@@ -101,7 +108,7 @@ export function Description(){
         </div>
       </div>
       <CarouselActors />
-      <Carousel array={positionRecommendation} title='Similar Movies'/>
+      <Carousel array={similarMovies} title='Similar Movies'/>
       <Footer />
     </div>
   )

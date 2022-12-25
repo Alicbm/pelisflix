@@ -8,7 +8,7 @@ import { IoIosArrowBack } from 'react-icons/io'
 import { useNavigate } from 'react-router-dom';
 
 export function ViewSearch() {
-  const { searchMovie, clickOneMovie, nameOfMovie } = React.useContext(AppContext);
+  const { searchMovie, searchMovie2, clickOneMovie, nameOfMovie } = React.useContext(AppContext);
   const navigate = useNavigate();
 
   return (
@@ -19,6 +19,18 @@ export function ViewSearch() {
       <div className="specificCategory-movies">
         {
           searchMovie?.results.map(item => (
+            <Link to='/description'>
+              <img
+                src={`${process.env.REACT_APP_URL_IMAGE}${item.poster_path}`}
+                alt={item.title}
+                onClick={() => clickOneMovie(item)}
+                key={item.id}
+              />
+            </Link>
+          ))
+        }
+        {
+          searchMovie2?.results.map(item => (
             <Link to='/description'>
               <img
                 src={`${process.env.REACT_APP_URL_IMAGE}${item.poster_path}`}
