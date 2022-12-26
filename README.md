@@ -66,7 +66,7 @@ It correctly bundles React in production mode and optimizes the build for the be
 	- Webpack
 	- Babel
 	- Git
-	 Api key
+	- Api key
 
 ## Built With :hammer_and_wrench:
 	 TheMovieDB API 
@@ -74,6 +74,6 @@ It correctly bundles React in production mode and optimizes the build for the be
 	- HTML
 	- CSS
 	- Git
-	 LocalStorage
+	- LocalStorage
 
 *Ceated by Alic Barandica, Fronted Developer.*
