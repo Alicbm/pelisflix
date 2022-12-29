@@ -1,7 +1,7 @@
 import React from 'react'
+import { AppContext } from './appContext';
 import { Link } from 'react-router-dom';
 import '../styles/carousel.css'
-import { AppContext } from './appContext';
 
 export function Carousel({ array, title, }) {
   const { clickOneMovie } = React.useContext(AppContext);

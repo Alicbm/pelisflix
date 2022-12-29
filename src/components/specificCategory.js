@@ -1,12 +1,12 @@
-import { Header } from "./header";
-import { InputSearch } from "./inputSearch";
-import '../styles/specificCategory.css'
-import { Footer } from "./footer";
-import { AppContext } from "./appContext";
 import React from "react";
+import { AppContext } from "./appContext";
+import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import { IoIosArrowBack } from 'react-icons/io'
-import { useNavigate } from 'react-router-dom';
+import { Header } from "./header";
+import { InputSearch } from "./inputSearch";
+import { Footer } from "./footer";
+import '../styles/specificCategory.css'
 
 
 export function SpecificCategory() {
@@ -31,10 +31,10 @@ export function SpecificCategory() {
           discoverMovie?.results.map(item => (
             <Link to='/description'>
               <img
+                key={item?.id}
                 src={`${process.env.REACT_APP_URL_IMAGE}${item?.poster_path}`}
                 alt={item?.title}
                 onClick={() => clickOneMovie(item)}
-                key={item?.id}
               />
             </Link>
           ))

@@ -1,6 +1,6 @@
 import React from 'react';
-import '../styles/search.css'
 import { InputSearch } from './inputSearch';
+import '../styles/search.css'
 
 function Search() {
   return (

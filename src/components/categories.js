@@ -1,8 +1,8 @@
 import React from "react"
 import { AppContext } from "./appContext"
-import '../styles/categories.css'
-import { Link } from "react-router-dom";
 import { useFunctionsJson } from "../hooks/useFunctionsJson";
+import { Link } from "react-router-dom";
+import '../styles/categories.css'
 
 export function Categories(){
   const { selectOneCategory } = React.useContext(AppContext); 

@@ -1,7 +1,7 @@
 import React from 'react'
+import { AppContext } from './appContext'
 import { Link } from 'react-router-dom';
 import '../styles/inputSearch.css'
-import { AppContext } from './appContext'
 
 export function InputSearch(){
   const { searchTheMovies, setNameOfMovie } = React.useContext(AppContext);

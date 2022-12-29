@@ -1,11 +1,11 @@
-import { Header } from "./header";
-import '../styles/specificCategory.css'
-import { Footer } from "./footer";
-import { AppContext } from "./appContext";
 import React from "react";
+import { AppContext } from "./appContext";
+import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import { IoIosArrowBack } from 'react-icons/io'
-import { useNavigate } from 'react-router-dom';
+import { Header } from "./header";
+import { Footer } from "./footer";
+import '../styles/specificCategory.css'
 
 export function ViewSearch() {
   const { searchMovie, searchMovie2, clickOneMovie, nameOfMovie } = React.useContext(AppContext);

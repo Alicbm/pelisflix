@@ -1,9 +1,9 @@
 import React from 'react'
-import { AiOutlineMenu } from 'react-icons/ai'
+import { AppContext } from './appContext';
 import { Link } from 'react-router-dom';
+import { AiOutlineMenu } from 'react-icons/ai'
 import pelisflix from '../images/pelisflix.png'
 import '../styles/header.css'
-import { AppContext } from './appContext';
 
 export function Header() {
   const { headerPopular, headerNowPlaying, headerTopRated } = React.useContext(AppContext);

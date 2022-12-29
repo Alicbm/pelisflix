@@ -15,6 +15,9 @@ export function ContainerApp({ children }) {
     headerMoviesStorage2,
    } = useLocalStorage();
 
+   const mainUrl = process.env.REACT_APP_MAIN_URL;
+   const apiKey = process.env.REACT_APP_KEY;
+
   const [headerMovies, setHeaderMovies] = React.useState(headerMoviesStorage);
   const [headerMovies2, setHeaderMovies2] = React.useState(headerMoviesStorage2);
 
@@ -37,8 +40,8 @@ export function ContainerApp({ children }) {
 
   // Function for the redirect to anothertypes of movies
   const headerPopular = async () => {
-    const popularOnePage = await fetch(process.env.REACT_APP_MAIN_URL + '/movie/popular?api_key=' + process.env.REACT_APP_KEY + '&language=en-US&page=1');
-    const popularTwoPage = await fetch(process.env.REACT_APP_MAIN_URL + '/movie/popular?api_key=' + process.env.REACT_APP_KEY + '&language=en-US&page=2');
+    const popularOnePage = await fetch(mainUrl + '/movie/popular?api_key=' + apiKey + '&language=en-US&page=1');
+    const popularTwoPage = await fetch(mainUrl + '/movie/popular?api_key=' + apiKey + '&language=en-US&page=2');
 
     const jsonpopularOnePage = await popularOnePage.json();
     const jsonpopularTwoPage = await popularTwoPage.json();
@@ -50,8 +53,8 @@ export function ContainerApp({ children }) {
     localStorage.setItem('headerMoviesTwo', JSON.stringify(jsonpopularTwoPage));
   }
   const headerNowPlaying = async () => {
-    const nowPlayingOnePage = await fetch(process.env.REACT_APP_MAIN_URL + '/movie/now_playing?api_key=' + process.env.REACT_APP_KEY + '&language=en-US&page=1');
-    const nowPlayingTwoPage = await fetch(process.env.REACT_APP_MAIN_URL + '/movie/now_playing?api_key=' + process.env.REACT_APP_KEY + '&language=en-US&page=2');
+    const nowPlayingOnePage = await fetch(mainUrl + '/movie/now_playing?api_key=' + apiKey + '&language=en-US&page=1');
+    const nowPlayingTwoPage = await fetch(mainUrl + '/movie/now_playing?api_key=' + apiKey + '&language=en-US&page=2');
   
     const jsonnowPlayingOnePage = await nowPlayingOnePage.json();
     const jsonnowPlayingTwoPage = await nowPlayingTwoPage.json();
@@ -64,8 +67,8 @@ export function ContainerApp({ children }) {
 
   }
   const headerTopRated = async () => {
-    const topRatedOnePage = await fetch(process.env.REACT_APP_MAIN_URL + '/movie/top_rated?api_key=' + process.env.REACT_APP_KEY + '&language=en-US&page=1');
-    const topRatedTwoPage = await fetch(process.env.REACT_APP_MAIN_URL + '/movie/top_rated?api_key=' + process.env.REACT_APP_KEY + '&language=en-US&page=2');
+    const topRatedOnePage = await fetch(mainUrl + '/movie/top_rated?api_key=' + apiKey + '&language=en-US&page=1');
+    const topRatedTwoPage = await fetch(mainUrl + '/movie/top_rated?api_key=' + apiKey + '&language=en-US&page=2');
   
     const jsontopRatedOnePage = await topRatedOnePage.json();
     const jsontopRatedTwoPage= await topRatedTwoPage.json();
@@ -83,24 +86,24 @@ export function ContainerApp({ children }) {
     setDescriptionMovie(item)
 
     //Movie workers
-    const movieWorkers = await fetch(`${process.env.REACT_APP_MAIN_URL}/movie/${item.id}/credits?api_key=${process.env.REACT_APP_KEY}`);
+    const movieWorkers = await fetch(`${mainUrl}/movie/${item.id}/credits?api_key=${apiKey}`);
     const jsonMovieWorkers = await movieWorkers.json();
-    const tvWorkers = await fetch(`${process.env.REACT_APP_MAIN_URL}/tv/${item.id}/credits?api_key=${process.env.REACT_APP_KEY}`);
+    const tvWorkers = await fetch(`${mainUrl}/tv/${item.id}/credits?api_key=${apiKey}`);
     const jsonTvWorkers = await tvWorkers.json();
 
     setWorkersMovie([jsonMovieWorkers, jsonTvWorkers]);
     localStorage.setItem('actors', JSON.stringify([jsonMovieWorkers, jsonTvWorkers]));
 
-    const categoryDetailMovie = await fetch(`${process.env.REACT_APP_MAIN_URL}/movie/${item.id}?api_key=${process.env.REACT_APP_KEY}`);
+    const categoryDetailMovie = await fetch(`${mainUrl}/movie/${item.id}?api_key=${apiKey}`);
     const jsonCategoryDetailMovie = await categoryDetailMovie.json();
-    const categoryDetailTv = await fetch(`${process.env.REACT_APP_MAIN_URL}/tv/${item.id}?api_key=${process.env.REACT_APP_KEY}`);
+    const categoryDetailTv = await fetch(`${mainUrl}/tv/${item.id}?api_key=${apiKey}`);
     const jsonCategoryDetailTv = await categoryDetailTv.json();
     setDetailCategory([jsonCategoryDetailMovie, jsonCategoryDetailTv]);
 
     //recommendations of movies
-    const recommendationsMovies = await fetch(`${process.env.REACT_APP_MAIN_URL}/movie/${item.id}/similar?api_key=${process.env.REACT_APP_KEY}&language=en-US&page=2&with_genres=${item.id}`);
+    const recommendationsMovies = await fetch(`${mainUrl}/movie/${item.id}/similar?api_key=${apiKey}&language=en-US&page=2&with_genres=${item.id}`);
     const jsonRecommendationsMovies = await recommendationsMovies.json();
-    const recommendationsTv = await fetch(`${process.env.REACT_APP_MAIN_URL}/tv/${item.id}/similar?api_key=${process.env.REACT_APP_KEY}&language=en-US&page=2&with_genres=${item.id}`);
+    const recommendationsTv = await fetch(`${mainUrl}/tv/${item.id}/similar?api_key=${apiKey}&language=en-US&page=2&with_genres=${item.id}`);
     const jsonRecommendationsTv = await recommendationsTv.json();
     setMoviesRecommendations([jsonRecommendationsMovies, jsonRecommendationsTv]);
 
@@ -111,12 +114,12 @@ export function ContainerApp({ children }) {
     setCategoryState(item);
     localStorage.setItem('categoryState', JSON.stringify(item));
 
-    const movieDiscover = await fetch(`${process.env.REACT_APP_MAIN_URL}/discover/movie?api_key=${process.env.REACT_APP_KEY}&language=en-US&page=1&with_genres=${item.id}`);
+    const movieDiscover = await fetch(`${mainUrl}/discover/movie?api_key=${apiKey}&language=en-US&page=1&with_genres=${item.id}`);
     const jsonMovieDiscover = await movieDiscover.json();
     localStorage.setItem('discover_v1', JSON.stringify(jsonMovieDiscover));
     setDiscoverMovie(jsonMovieDiscover);
 
-    const movieDiscover2 = await fetch(`${process.env.REACT_APP_MAIN_URL}/discover/movie?api_key=${process.env.REACT_APP_KEY}&language=en-US&page=2&with_genres=${item.id}`);
+    const movieDiscover2 = await fetch(`${mainUrl}/discover/movie?api_key=${apiKey}&language=en-US&page=2&with_genres=${item.id}`);
     const jsonMovieDiscover2 = await movieDiscover2.json();
     localStorage.setItem('discover_v2', JSON.stringify(jsonMovieDiscover2));
     setDiscoverMovie2(jsonMovieDiscover2);
@@ -125,11 +128,11 @@ export function ContainerApp({ children }) {
   // Function that give the results when you search a movie in specific
   const searchTheMovies = async (nameMovie) => {
     // Search movies
-    const movieSearch = await fetch(`${process.env.REACT_APP_MAIN_URL}/search/movie?api_key=${process.env.REACT_APP_KEY}&language=en-US&query=${nameMovie}`);
+    const movieSearch = await fetch(`${mainUrl}/search/movie?api_key=${apiKey}&language=en-US&query=${nameMovie}`);
     const jsonMovieSearch = await movieSearch.json();
     setSearhMovie(jsonMovieSearch);
 
-    const nowPlayingOnePage = await fetch(process.env.REACT_APP_MAIN_URL + '/movie/now_playing?api_key=' + process.env.REACT_APP_KEY + '&language=en-US&page=1');  
+    const nowPlayingOnePage = await fetch(mainUrl + '/movie/now_playing?api_key=' + apiKey + '&language=en-US&page=1');  
     const jsonnowPlayingOnePage = await nowPlayingOnePage.json();
 
     setSearchMovie2(jsonnowPlayingOnePage);

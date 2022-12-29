@@ -1,12 +1,12 @@
+import React from "react";
+import { AppContext } from "./appContext";
+import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+import { IoIosArrowBack } from 'react-icons/io'
 import { Header } from "./header";
 import { InputSearch } from "./inputSearch";
-import '../styles/specificCategory.css'
 import { Footer } from "./footer";
-import { AppContext } from "./appContext";
-import React from "react";
-import { Link } from "react-router-dom";
-import { IoIosArrowBack } from 'react-icons/io'
-import { useNavigate } from 'react-router-dom';
+import '../styles/specificCategory.css'
 
 
 export function MoviesHeader() {

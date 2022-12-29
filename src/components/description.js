@@ -1,15 +1,15 @@
-import { BsCalendarDate } from 'react-icons/bs';
-import { BiMoviePlay } from 'react-icons/bi';
-import '../styles/description.css'
-import { Header } from './header';
-import { CarouselActors } from './carouselActors';
-import { Footer } from './footer';
 import React from 'react';
 import { AppContext } from './appContext';
-import { IoIosArrowBack } from 'react-icons/io'
-import { Link, useNavigate } from 'react-router-dom';
-import { Carousel } from './carousel';
 import { useLocalStorage } from '../hooks/useLocalStorage';
+import { Link, useNavigate } from 'react-router-dom';
+import { IoIosArrowBack } from 'react-icons/io'
+import { BsCalendarDate } from 'react-icons/bs';
+import { BiMoviePlay } from 'react-icons/bi';
+import { Header } from './header';
+import { CarouselActors } from './carouselActors';
+import { Carousel } from './carousel';
+import { Footer } from './footer';
+import '../styles/description.css'
 
 export function Description(){
   const { 

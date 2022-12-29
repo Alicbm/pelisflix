@@ -1,10 +1,10 @@
 import React from "react";
 import { useFunctionsJson } from "../hooks/useFunctionsJson";
+import { Header } from "../components/header";
 import { Carousel } from "../components/carousel";
 import { CarouselTraditional } from "../components/carouselTraditional";
 import { Categories } from "../components/categories";
 import { Footer } from "../components/footer";
-import { Header } from "../components/header";
 import Search from "../components/search";
 
 export function WelcomePage() {

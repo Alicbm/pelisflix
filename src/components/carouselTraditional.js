@@ -1,6 +1,6 @@
+import React from "react";
 import { Carousel } from "./carousel";
 import '../styles/carouselTraditional.css'
-import React from "react";
 
 export function CarouselTraditional({ array }){
   

@@ -1,7 +1,7 @@
-import '../styles/carouselActors.css'
-import unknown from '../images/unknown.jpg'
 import React from 'react'
 import { AppContext } from './appContext';
+import unknown from '../images/unknown.jpg'
+import '../styles/carouselActors.css'
 
 export function CarouselActors() {
   const { workersMovie } = React.useContext(AppContext);
