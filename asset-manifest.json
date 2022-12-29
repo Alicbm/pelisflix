@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "./static/css/main.104650fb.css",
-    "main.js": "./static/js/main.fc64b2ff.js",
+    "main.js": "./static/js/main.5d37ce2f.js",
     "static/media/avengers.jpg": "./static/media/avengers.5b92fba5c69c0751c854.jpg",
     "static/media/star-wars.jpg": "./static/media/star-wars.39106bae2408a15bb46e.jpg",
     "static/media/unknown.jpg": "./static/media/unknown.29ade317c78f106abebf.jpg",
     "index.html": "./index.html",
     "main.104650fb.css.map": "./static/css/main.104650fb.css.map",
-    "main.fc64b2ff.js.map": "./static/js/main.fc64b2ff.js.map"
+    "main.5d37ce2f.js.map": "./static/js/main.5d37ce2f.js.map"
   },
   "entrypoints": [
     "static/css/main.104650fb.css",
-    "static/js/main.fc64b2ff.js"
+    "static/js/main.5d37ce2f.js"
   ]
 }
