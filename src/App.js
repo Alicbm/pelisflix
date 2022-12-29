@@ -1,4 +1,4 @@
-import { Route, Routes, HashRouter } from "react-router-dom";
+import { Route, Routes, BrowserRouter } from "react-router-dom";
 import { ContainerApp } from "./components/appContext";
 import { Description } from "./components/description";
 import { MoviesHeader } from "./components/moviesHeader";
@@ -10,7 +10,7 @@ import { WelcomePage } from "./mainComponents/welcomePage";
 function App() {
   return (
     <ContainerApp>
-      <HashRouter>
+      <BrowserRouter>
         <Routes>
           <Route path='/' element={<WelcomePage />} />
           <Route path='/movie-header' element={<MoviesHeader />} />
@@ -18,7 +18,7 @@ function App() {
           <Route path='/category' element={<SpecificCategory />} />
           <Route path='/search' element={<ViewSearch />} />
         </Routes>
-      </HashRouter>
+      </BrowserRouter>
     </ContainerApp>
   )
 }
