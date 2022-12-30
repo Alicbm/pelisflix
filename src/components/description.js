@@ -27,7 +27,7 @@ export function Description(){
     localStorage.setItem('recommendations', JSON.stringify(moviesRecommendations));
     localStorage.setItem('categories', JSON.stringify(detailCategory));
   }
-  console.log(detailCategory);
+
   const navigate = useNavigate();
   window.scrollTo(0, 0);
 
@@ -80,7 +80,7 @@ export function Description(){
         </div>
         <div className='overview-workers'>
           {
-            detailCategory[0]?.genres.map(item => (
+            detailCategory[0]?.genres?.map(item => (
               <Link to='/category' key={item?.id}>
                 <div 
                   className='overview-workers__one' 
