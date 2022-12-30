@@ -27,7 +27,7 @@ export function Description(){
     localStorage.setItem('recommendations', JSON.stringify(moviesRecommendations));
     localStorage.setItem('categories', JSON.stringify(detailCategory));
   }
-
+  console.log(detailCategory);
   const navigate = useNavigate();
   window.scrollTo(0, 0);
 
