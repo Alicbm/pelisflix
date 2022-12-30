@@ -2,42 +2,52 @@ export function useLocalStorage() {
 
   // Description Page
   const localStorageDescription = localStorage.getItem('descriptionMovie');
-  const localStorageActors = localStorage.getItem('actors');
-
   let infoDescription;
-  let actors;
 
   if (!localStorageDescription) {
     localStorage.setItem('descriptionMovie', JSON.stringify([]));
-    localStorage.setItem('actors', JSON.stringify([]));
     infoDescription = [];
-    actors = [];
   } else {
     infoDescription = JSON.parse(localStorageDescription);
+  }
+
+  const localStorageActors = localStorage.getItem('actors');
+  let actors;
+
+  if(!localStorageActors){
+    localStorage.setItem('actors', JSON.stringify([]));
+    actors = [];
+  }else{
     actors = JSON.parse(localStorageActors);
   }
 
   // List of Movies (SpecificCategory)
   const localStorageDiscover = localStorage.getItem('discover_v1');
   const localStorageDiscover2 = localStorage.getItem('discover_v2');
-  const localStorageCategoryName = localStorage.getItem('categoryState');
 
   let discoverStorage;
   let discoverStorage2;
-  let categotyNameStorage;
 
   if (!localStorageDiscover) {
     localStorage.setItem('discover_v1', JSON.stringify([]));
     localStorage.setItem('discover_v2', JSON.stringify([]));
-    localStorage.setItem('categoryState', JSON.stringify([]));
     discoverStorage = [];
     discoverStorage2 = [];
-    categotyNameStorage = [];
   } else {
     discoverStorage = JSON.parse(localStorageDiscover);
     discoverStorage2 = JSON.parse(localStorageDiscover2);
+  }
+
+  const localStorageCategoryName = localStorage.getItem('categoryState');
+  let categotyNameStorage;
+
+  if(!localStorageCategoryName){
+    localStorage.setItem('categoryState', JSON.stringify([]));
+    categotyNameStorage = [];
+  }else{
     categotyNameStorage = JSON.parse(localStorageCategoryName);
   }
+
 
   // Movies of the header section
 
@@ -58,17 +68,23 @@ export function useLocalStorage() {
   }
 
   const localStorageSimilarMovies = localStorage.getItem('recommendations');
-  const localStorageCategories = localStorage.getItem('categories');
   let similarMovies;
-  let categoriesStorage;
 
   if (!localStorageSimilarMovies) {
     localStorage.setItem('recommendations', JSON.stringify([]));
     localStorage.setItem('categories', JSON.stringify([]));
     similarMovies = [];
-    categoriesStorage = [];
   } else {
     similarMovies = JSON.parse(localStorageSimilarMovies);
+  }
+  
+  const localStorageCategories = localStorage.getItem('categories');
+  let categoriesStorage;
+
+  if (!localStorageCategories) {
+    localStorage.setItem('categories', JSON.stringify([]));
+    categoriesStorage = [];
+  } else {
     categoriesStorage = JSON.parse(localStorageCategories);
   }
 
