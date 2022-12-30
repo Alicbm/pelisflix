@@ -58,10 +58,10 @@ export function useLocalStorage() {
   let headerMoviesStorage2;
 
   if (!localStorageHeaderMovies) {
-    localStorage.setItem('headerMovies', JSON.stringify([]));
-    localStorage.setItem('headerMoviesTwo', JSON.stringify([]));
-    headerMoviesStorage = [];
-    headerMoviesStorage2 = [];
+    localStorage.setItem('headerMovies', JSON.stringify([{test:1}]));
+    localStorage.setItem('headerMoviesTwo', JSON.stringify([{test:1}]));
+    headerMoviesStorage = [{test:1}];
+    headerMoviesStorage2 = [{test:1}];
   } else {
     headerMoviesStorage = JSON.parse(localStorageHeaderMovies);
     headerMoviesStorage2 = JSON.parse(localStorageHeaderMovies2);
@@ -72,7 +72,6 @@ export function useLocalStorage() {
 
   if (!localStorageSimilarMovies) {
     localStorage.setItem('recommendations', JSON.stringify([]));
-    localStorage.setItem('categories', JSON.stringify([]));
     similarMovies = [];
   } else {
     similarMovies = JSON.parse(localStorageSimilarMovies);
@@ -83,7 +82,7 @@ export function useLocalStorage() {
 
   if (!localStorageCategories) {
     localStorage.setItem('categories', JSON.stringify([]));
-    categoriesStorage = [];
+    categoriesStorage = [{"genres":[{"id":28,"name":"Action"},{"id":12,"name":"Adventure"},{"id":14,"name":"Fantasy"},{"id":878,"name":"Science Fiction"}]}];
   } else {
     categoriesStorage = JSON.parse(localStorageCategories);
   }
