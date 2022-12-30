@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/pelisflix/static/css/main.661315b6.css",
-    "main.js": "/pelisflix/static/js/main.208a8417.js",
+    "main.js": "/pelisflix/static/js/main.d13252f6.js",
     "static/media/avengers.jpg": "/pelisflix/static/media/avengers.5b92fba5c69c0751c854.jpg",
     "static/media/star-wars.jpg": "/pelisflix/static/media/star-wars.39106bae2408a15bb46e.jpg",
     "static/media/unknown.jpg": "/pelisflix/static/media/unknown.29ade317c78f106abebf.jpg",
     "static/media/incognito.jpg": "/pelisflix/static/media/incognito.32aa2b8a85e24899a01b.jpg",
     "index.html": "/pelisflix/index.html",
     "main.661315b6.css.map": "/pelisflix/static/css/main.661315b6.css.map",
-    "main.208a8417.js.map": "/pelisflix/static/js/main.208a8417.js.map"
+    "main.d13252f6.js.map": "/pelisflix/static/js/main.d13252f6.js.map"
   },
   "entrypoints": [
     "static/css/main.661315b6.css",
-    "static/js/main.208a8417.js"
+    "static/js/main.d13252f6.js"
   ]
 }
