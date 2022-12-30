@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { IoIosArrowBack } from 'react-icons/io'
 import { Header } from "./header";
 import { Footer } from "./footer";
+import incognito from '../images/incognito.jpg';
 import '../styles/specificCategory.css'
 
 export function ViewSearch() {
@@ -21,8 +22,13 @@ export function ViewSearch() {
           searchMovie?.results.map(item => (
             <Link to='/description' key={item?.id}>
               <img
-                src={`${process.env.REACT_APP_URL_IMAGE}${item.poster_path}`}
-                alt={item.title}
+                src={
+                  !item?.poster_path ?
+                  incognito 
+                  :
+                  `${process.env.REACT_APP_URL_IMAGE}${item?.poster_path}`
+                }
+                alt={item?.title}
                 onClick={() => clickOneMovie(item)}
               />
             </Link>
@@ -32,8 +38,8 @@ export function ViewSearch() {
           searchMovie2?.results.map(item => (
             <Link to='/description' key={item?.id}>
               <img
-                src={`${process.env.REACT_APP_URL_IMAGE}${item.poster_path}`}
-                alt={item.title}
+                src={`${process.env.REACT_APP_URL_IMAGE}${item?.poster_path}`}
+                alt={item?.title}
                 onClick={() => clickOneMovie(item)}
               />
             </Link>

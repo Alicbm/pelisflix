@@ -16,10 +16,10 @@ export function Categories(){
           to='/category' 
           className="categories-name"
           onClick={() => selectOneCategory(item)}
-          key={item.id}
-          id={item.id}
+          key={item?.id}
+          id={item?.id}
         >
-          <div className="categories-name">{item.name}</div>
+          <div className="categories-name">{item?.name}</div>
         </Link>
       ))}
     </div>

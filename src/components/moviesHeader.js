@@ -28,10 +28,10 @@ export function MoviesHeader() {
           headerMovies?.results.map(item => (
             <Link to='/description' key={item?.id}>
               <img
-                src={`${process.env.REACT_APP_URL_IMAGE}${item.poster_path}`}
-                alt={item.title}
+                src={`${process.env.REACT_APP_URL_IMAGE}${item?.poster_path}`}
+                alt={item?.title}
                 onClick={() => clickOneMovie(item)}
-                key={item.id}
+                key={item?.id}
               />
             </Link>
           ))
@@ -40,8 +40,8 @@ export function MoviesHeader() {
           headerMovies2?.results.map(item => (
             <Link to='/description' key={item?.id}>
               <img
-                src={`${process.env.REACT_APP_URL_IMAGE}${item.poster_path}`}
-                alt={item.title}
+                src={`${process.env.REACT_APP_URL_IMAGE}${item?.poster_path}`}
+                alt={item?.title}
                 onClick={() => clickOneMovie(item)}
               />
             </Link>

@@ -1,4 +1,4 @@
-export function useLocalStorage(){
+export function useLocalStorage() {
 
   // Description Page
   const localStorageDescription = localStorage.getItem('descriptionMovie');
@@ -59,7 +59,7 @@ export function useLocalStorage(){
   const localStorageCategories = localStorage.getItem('categories');
   let similarMovies;
   let categoriesStorage;
-  
+
   if (!localStorageSimilarMovies) {
     localStorage.setItem('recommendations', JSON.stringify([]));
     localStorage.setItem('categories', JSON.stringify([]));
@@ -68,6 +68,24 @@ export function useLocalStorage(){
   } else {
     similarMovies = JSON.parse(localStorageSimilarMovies);
     categoriesStorage = JSON.parse(localStorageCategories);
+  }
+
+  const localStorageMovieSearch = localStorage.getItem('movieSearchOne');
+  const localStorageMovieSearch2 = localStorage.getItem('movieSearchTwo');
+  const localStorageMovieSearchName = localStorage.getItem('movieSearchName');
+  let movieSearch;
+  let movieSearch2;
+  let movieSearchName;
+
+  if (!localStorageMovieSearch) {
+    localStorage.setItem('movieSearchOne', JSON.stringify([]));
+    localStorage.setItem('movieSearchTwo', JSON.stringify([]));
+    movieSearch = [];
+    movieSearch2 = [];
+  } else {
+    movieSearch = JSON.parse(localStorageMovieSearch);
+    movieSearch2 = JSON.parse(localStorageMovieSearch2);
+    movieSearchName = JSON.parse(localStorageMovieSearchName);
   }
 
   return {
@@ -80,6 +98,10 @@ export function useLocalStorage(){
     headerMoviesStorage2,
 
     similarMovies,
-    categoriesStorage
+    categoriesStorage,
+
+    movieSearch,
+    movieSearch2,
+    movieSearchName
   }
 }

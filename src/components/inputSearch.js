@@ -9,6 +9,7 @@ export function InputSearch(){
   const handleChange = (event) =>{
     const value = event.target.value;
     searchTheMovies(value);
+    localStorage.setItem('movieSearchName', JSON.stringify(value));
     setNameOfMovie(value);
   }
 

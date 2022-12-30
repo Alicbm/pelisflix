@@ -13,6 +13,9 @@ export function ContainerApp({ children }) {
     categotyNameStorage,
     headerMoviesStorage,
     headerMoviesStorage2,
+    movieSearch,
+    movieSearch2,
+    movieSearchName,
    } = useLocalStorage();
 
    const mainUrl = process.env.REACT_APP_MAIN_URL;
@@ -32,9 +35,9 @@ export function ContainerApp({ children }) {
   const [workersMovie, setWorkersMovie] = React.useState(actors);
 
   const [detailCategory, setDetailCategory] = React.useState([]);
-  const [nameOfMovie, setNameOfMovie] = React.useState('');  
-  const [searchMovie, setSearhMovie] = React.useState(null);
-  const [searchMovie2, setSearchMovie2] = React.useState(null);
+  const [nameOfMovie, setNameOfMovie] = React.useState(movieSearchName);  
+  const [searchMovie, setSearhMovie] = React.useState(movieSearch);
+  const [searchMovie2, setSearchMovie2] = React.useState(movieSearch2);
 
   const [moviesRecommendations, setMoviesRecommendations] = React.useState([]);
 
@@ -85,42 +88,28 @@ export function ContainerApp({ children }) {
     localStorage.setItem('descriptionMovie', JSON.stringify(item));
     setDescriptionMovie(item)
 
+    //Movie workers
     const movieWorkers = await fetch(`${mainUrl}/movie/${item.id}/credits?api_key=${apiKey}`);
     const jsonMovieWorkers = await movieWorkers.json();
+    const tvWorkers = await fetch(`${mainUrl}/tv/${item.id}/credits?api_key=${apiKey}`);
+    const jsonTvWorkers = await tvWorkers.json();
 
-    //For movies
-    if (jsonMovieWorkers.cast) {
-      //Movie workers
-      setWorkersMovie([jsonMovieWorkers]);
-      localStorage.setItem('actors', JSON.stringify([jsonMovieWorkers]));
+    setWorkersMovie([jsonMovieWorkers, jsonTvWorkers]);
+    localStorage.setItem('actors', JSON.stringify([jsonMovieWorkers, jsonTvWorkers]));
 
-      const categoryDetailMovie = await fetch(`${mainUrl}/movie/${item.id}?api_key=${apiKey}`);
-      const jsonCategoryDetailMovie = await categoryDetailMovie.json();
-      setDetailCategory([jsonCategoryDetailMovie]);
+    const categoryDetailMovie = await fetch(`${mainUrl}/movie/${item.id}?api_key=${apiKey}`);
+    const jsonCategoryDetailMovie = await categoryDetailMovie.json();
+    const categoryDetailTv = await fetch(`${mainUrl}/tv/${item.id}?api_key=${apiKey}`);
+    const jsonCategoryDetailTv = await categoryDetailTv.json();
+    setDetailCategory([jsonCategoryDetailMovie, jsonCategoryDetailTv]);
 
-      //recommendations of movies
-      const recommendationsMovies = await fetch(`${mainUrl}/movie/${item.id}/similar?api_key=${apiKey}&language=en-US&page=2&with_genres=${item.id}`);
-      const jsonRecommendationsMovies = await recommendationsMovies.json();
-      setMoviesRecommendations([jsonRecommendationsMovies]);
+    //recommendations of movies
+    const recommendationsMovies = await fetch(`${mainUrl}/movie/${item.id}/similar?api_key=${apiKey}&language=en-US&page=2&with_genres=${item.id}`);
+    const jsonRecommendationsMovies = await recommendationsMovies.json();
+    const recommendationsTv = await fetch(`${mainUrl}/tv/${item.id}/similar?api_key=${apiKey}&language=en-US&page=2&with_genres=${item.id}`);
+    const jsonRecommendationsTv = await recommendationsTv.json();
+    setMoviesRecommendations([jsonRecommendationsMovies, jsonRecommendationsTv]);
 
-    } 
-    //for tv shows
-    else {
-      const tvWorkers = await fetch(`${mainUrl}/tv/${item.id}/credits?api_key=${apiKey}`);
-      const jsonTvWorkers = await tvWorkers.json();
-
-      setWorkersMovie([jsonTvWorkers]);
-      localStorage.setItem('actors', JSON.stringify([jsonTvWorkers]));
-
-      const categoryDetailTv = await fetch(`${mainUrl}/tv/${item.id}?api_key=${apiKey}`);
-      const jsonCategoryDetailTv = await categoryDetailTv.json();
-      setDetailCategory([jsonCategoryDetailTv]);
-
-      //recommendations of movies
-      const recommendationsTv = await fetch(`${mainUrl}/tv/${item.id}/similar?api_key=${apiKey}&language=en-US&page=2&with_genres=${item.id}`);
-      const jsonRecommendationsTv = await recommendationsTv.json();
-      setMoviesRecommendations([jsonRecommendationsTv]);
-    }
   }
 
   // Function that happen when you click on a category
@@ -144,11 +133,14 @@ export function ContainerApp({ children }) {
     // Search movies
     const movieSearch = await fetch(`${mainUrl}/search/movie?api_key=${apiKey}&language=en-US&query=${nameMovie}`);
     const jsonMovieSearch = await movieSearch.json();
+
+    localStorage.setItem('movieSearchOne', JSON.stringify(jsonMovieSearch));
     setSearhMovie(jsonMovieSearch);
 
     const nowPlayingOnePage = await fetch(mainUrl + '/movie/now_playing?api_key=' + apiKey + '&language=en-US&page=1');  
     const jsonnowPlayingOnePage = await nowPlayingOnePage.json();
 
+    localStorage.setItem('movieSearchTwo', JSON.stringify(jsonnowPlayingOnePage));
     setSearchMovie2(jsonnowPlayingOnePage);
   }
 

@@ -88,8 +88,6 @@ export function Description(){
         </div>
         <div className='overview-workers'>
           {
-            !categoriesStorage?.genres ? ''
-            :
             categoriesStorage?.genres.map(item => (
               <Link to='/category' key={item?.id}>
                 <div 
