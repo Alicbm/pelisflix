@@ -65,8 +65,8 @@ export function useLocalStorage() {
   if (!localStorageSimilarMovies) {
     localStorage.setItem('recommendations', JSON.stringify([]));
     localStorage.setItem('categories', JSON.stringify([]));
-    similarMovies = [[{test:1}]];
-    categoriesStorage = [[{test:1}]];
+    similarMovies = [{test:1}];
+    categoriesStorage = [{test:1}];
   } else {
     similarMovies = JSON.parse(localStorageSimilarMovies);
     categoriesStorage = JSON.parse(localStorageCategories);
