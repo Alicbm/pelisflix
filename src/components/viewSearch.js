@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { IoIosArrowBack } from 'react-icons/io'
 import { Header } from "./header";
 import { Footer } from "./footer";
-import incognito from '../images/incognito.jpg';
+import incognito from '../images/incognito.jpg'
 import '../styles/specificCategory.css'
 
 export function ViewSearch() {
