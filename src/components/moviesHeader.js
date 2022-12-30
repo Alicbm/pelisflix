@@ -14,7 +14,7 @@ export function MoviesHeader() {
   const navigate = useNavigate();
 
   window.scrollTo(0, 0);
-
+  console.log(headerMovies2);
   return (
     <div className="specificCategory-container">
       <Header />

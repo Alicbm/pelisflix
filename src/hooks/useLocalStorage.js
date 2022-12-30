@@ -29,8 +29,10 @@ export function useLocalStorage() {
   if (!localStorageDiscover) {
     localStorage.setItem('discover_v1', JSON.stringify([]));
     localStorage.setItem('discover_v2', JSON.stringify([]));
-    discoverStorage = [];
-    discoverStorage2 = [];
+    localStorage.setItem('categoryState', JSON.stringify([]));
+    discoverStorage = [{test:1}];
+    discoverStorage2 = [{test:1}];
+    categotyNameStorage = [{test:1}];
   } else {
     discoverStorage = JSON.parse(localStorageDiscover);
     discoverStorage2 = JSON.parse(localStorageDiscover2);
@@ -46,10 +48,10 @@ export function useLocalStorage() {
   let headerMoviesStorage2;
 
   if (!localStorageHeaderMovies) {
-    localStorage.setItem('headerMovies', JSON.stringify([]));
-    localStorage.setItem('headerMoviesTwo', JSON.stringify([]));
-    headerMoviesStorage = [];
-    headerMoviesStorage2 = [];
+    localStorage.setItem('headerMovies', JSON.stringify([{test:1}]));
+    localStorage.setItem('headerMoviesTwo', JSON.stringify([{test:1}]));
+    headerMoviesStorage = [{test:1}];
+    headerMoviesStorage2 = [{test:1}];
   } else {
     headerMoviesStorage = JSON.parse(localStorageHeaderMovies);
     headerMoviesStorage2 = JSON.parse(localStorageHeaderMovies2);

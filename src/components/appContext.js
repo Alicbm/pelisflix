@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 
 export const AppContext = React.createContext();
@@ -16,6 +17,8 @@ export function ContainerApp({ children }) {
     movieSearch,
     movieSearch2,
     movieSearchName,
+    categoriesStorage,
+    similarMovies,
    } = useLocalStorage();
 
    const mainUrl = process.env.REACT_APP_MAIN_URL;
@@ -34,12 +37,15 @@ export function ContainerApp({ children }) {
   const [descriptionMovie, setDescriptionMovie] = React.useState(infoDescription);
   const [workersMovie, setWorkersMovie] = React.useState(actors);
 
-  const [detailCategory, setDetailCategory] = React.useState([]);
+  const [detailCategory, setDetailCategory] = React.useState(categoriesStorage);
   const [nameOfMovie, setNameOfMovie] = React.useState(movieSearchName);  
   const [searchMovie, setSearhMovie] = React.useState(movieSearch);
   const [searchMovie2, setSearchMovie2] = React.useState(movieSearch2);
 
-  const [moviesRecommendations, setMoviesRecommendations] = React.useState([]);
+  const [moviesRecommendations, setMoviesRecommendations] = React.useState(similarMovies);
+
+  // const navigate = useNavigate();
+
 
   // Function for the redirect to anothertypes of movies
   const headerPopular = async () => {
@@ -54,6 +60,7 @@ export function ContainerApp({ children }) {
 
     localStorage.setItem('headerMovies', JSON.stringify(jsonpopularOnePage));
     localStorage.setItem('headerMoviesTwo', JSON.stringify(jsonpopularTwoPage));
+    // navigate('/movie-header');
   }
   const headerNowPlaying = async () => {
     const nowPlayingOnePage = await fetch(mainUrl + '/movie/now_playing?api_key=' + apiKey + '&language=en-US&page=1');
@@ -105,7 +112,6 @@ export function ContainerApp({ children }) {
       const recommendationsMovies = await fetch(`${mainUrl}/movie/${item.id}/similar?api_key=${apiKey}&language=en-US&page=2&with_genres=${item.id}`);
       const jsonRecommendationsMovies = await recommendationsMovies.json();
       setMoviesRecommendations([jsonRecommendationsMovies]);
-
     } 
     //for tv shows
     else {

@@ -25,3 +25,7 @@ body::-webkit-scrollbar-thumb{
   background-color: #2b2b2b;
   border-radius: 8px;
 }
+#root{
+  max-width: 1300px;
+  margin: 0 auto;
+}

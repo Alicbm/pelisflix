@@ -63,8 +63,10 @@ a{
 
 @media(min-width: 700px){
   .header-container{
+    max-width: 1300px;
     display: flex;
     justify-content: space-between;
+    margin: 0 auto;
   }
   .header-contenainer__menu{
     width: auto;

@@ -19,21 +19,13 @@ export function Description(){
     moviesRecommendations, 
   } = React.useContext(AppContext);
 
-  const { similarMovies, categoriesStorage } = useLocalStorage();
-
   const styleBackground = {
     background: `linear-gradient(rgba(0 0 0 / 0.9), rgba(0 0 0 / 0.7)), url(https://image.tmdb.org/t/p/original${descriptionMovie.backdrop_path})`,
   }
-
-  const index = detailCategory.findIndex(item => item?.genres);
-  const position = detailCategory[index];
-
-  const indexRecommendation = moviesRecommendations.findIndex(item => item?.results);
-  const positionRecommendation = moviesRecommendations[indexRecommendation];
   
-  if(positionRecommendation){
-    localStorage.setItem('recommendations', JSON.stringify(positionRecommendation));
-    localStorage.setItem('categories', JSON.stringify(position));
+  if(moviesRecommendations){
+    localStorage.setItem('recommendations', JSON.stringify(moviesRecommendations));
+    localStorage.setItem('categories', JSON.stringify(detailCategory));
   }
 
   const navigate = useNavigate();
@@ -88,7 +80,7 @@ export function Description(){
         </div>
         <div className='overview-workers'>
           {
-            categoriesStorage?.genres.map(item => (
+            detailCategory[0]?.genres.map(item => (
               <Link to='/category' key={item?.id}>
                 <div 
                   className='overview-workers__one' 
@@ -102,7 +94,7 @@ export function Description(){
         </div>
       </div>
       <CarouselActors />
-      <Carousel array={similarMovies} title='Similar Movies'/>
+      <Carousel array={moviesRecommendations[0]} title='Similar Movies'/>
       <Footer />
     </div>
   )
