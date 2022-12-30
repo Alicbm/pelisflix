@@ -56,13 +56,13 @@ export function useLocalStorage(){
   }
 
   const localStorageSimilarMovies = localStorage.getItem('recommendations');
-  const localStorageCategories = localStorage.getItem('category');
+  const localStorageCategories = localStorage.getItem('categories');
   let similarMovies;
   let categoriesStorage;
   
   if (!localStorageSimilarMovies) {
     localStorage.setItem('recommendations', JSON.stringify([]));
-    localStorage.setItem('category', JSON.stringify([]));
+    localStorage.setItem('categories', JSON.stringify([]));
     similarMovies = [];
     categoriesStorage = [];
   } else {

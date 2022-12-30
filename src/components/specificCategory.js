@@ -29,9 +29,8 @@ export function SpecificCategory() {
       <div className="specificCategory-movies">
         {
           discoverMovie?.results.map(item => (
-            <Link to='/description'>
+            <Link to='/description' key={item?.id}>
               <img
-                key={item?.id}
                 src={`${process.env.REACT_APP_URL_IMAGE}${item?.poster_path}`}
                 alt={item?.title}
                 onClick={() => clickOneMovie(item)}
@@ -41,12 +40,11 @@ export function SpecificCategory() {
         }
         {
           discoverMovie2?.results.map(item => (
-            <Link to='/description'>
+            <Link to='/description' key={item?.id}>
               <img
                 src={`${process.env.REACT_APP_URL_IMAGE}${item?.poster_path}`}
                 alt={item?.title}
                 onClick={() => clickOneMovie(item)}
-                key={item?.id}
               />
             </Link>
           ))

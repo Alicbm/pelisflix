@@ -19,24 +19,22 @@ export function ViewSearch() {
       <div className="specificCategory-movies">
         {
           searchMovie?.results.map(item => (
-            <Link to='/description'>
+            <Link to='/description' key={item?.id}>
               <img
                 src={`${process.env.REACT_APP_URL_IMAGE}${item.poster_path}`}
                 alt={item.title}
                 onClick={() => clickOneMovie(item)}
-                key={item.id}
               />
             </Link>
           ))
         }
         {
           searchMovie2?.results.map(item => (
-            <Link to='/description'>
+            <Link to='/description' key={item?.id}>
               <img
                 src={`${process.env.REACT_APP_URL_IMAGE}${item.poster_path}`}
                 alt={item.title}
                 onClick={() => clickOneMovie(item)}
-                key={item.id}
               />
             </Link>
           ))
