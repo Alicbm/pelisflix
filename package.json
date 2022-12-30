@@ -1,5 +1,5 @@
 {
-  "name": "app-movies",
+  "name": "pelisflix",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -44,5 +44,5 @@
   "devDependencies": {
     "gh-pages": "^4.0.0"
   },
-  "homepage": "."
+  "homepage": "https://Alicbm.github.io/pelisflix"
 }
