@@ -88,28 +88,42 @@ export function ContainerApp({ children }) {
     localStorage.setItem('descriptionMovie', JSON.stringify(item));
     setDescriptionMovie(item)
 
-    //Movie workers
     const movieWorkers = await fetch(`${mainUrl}/movie/${item.id}/credits?api_key=${apiKey}`);
     const jsonMovieWorkers = await movieWorkers.json();
-    const tvWorkers = await fetch(`${mainUrl}/tv/${item.id}/credits?api_key=${apiKey}`);
-    const jsonTvWorkers = await tvWorkers.json();
 
-    setWorkersMovie([jsonMovieWorkers, jsonTvWorkers]);
-    localStorage.setItem('actors', JSON.stringify([jsonMovieWorkers, jsonTvWorkers]));
+    //For movies
+    if (jsonMovieWorkers.cast) {
+      //Movie workers
+      setWorkersMovie([jsonMovieWorkers]);
+      localStorage.setItem('actors', JSON.stringify([jsonMovieWorkers]));
 
-    const categoryDetailMovie = await fetch(`${mainUrl}/movie/${item.id}?api_key=${apiKey}`);
-    const jsonCategoryDetailMovie = await categoryDetailMovie.json();
-    const categoryDetailTv = await fetch(`${mainUrl}/tv/${item.id}?api_key=${apiKey}`);
-    const jsonCategoryDetailTv = await categoryDetailTv.json();
-    setDetailCategory([jsonCategoryDetailMovie, jsonCategoryDetailTv]);
+      const categoryDetailMovie = await fetch(`${mainUrl}/movie/${item.id}?api_key=${apiKey}`);
+      const jsonCategoryDetailMovie = await categoryDetailMovie.json();
+      setDetailCategory([jsonCategoryDetailMovie]);
 
-    //recommendations of movies
-    const recommendationsMovies = await fetch(`${mainUrl}/movie/${item.id}/similar?api_key=${apiKey}&language=en-US&page=2&with_genres=${item.id}`);
-    const jsonRecommendationsMovies = await recommendationsMovies.json();
-    const recommendationsTv = await fetch(`${mainUrl}/tv/${item.id}/similar?api_key=${apiKey}&language=en-US&page=2&with_genres=${item.id}`);
-    const jsonRecommendationsTv = await recommendationsTv.json();
-    setMoviesRecommendations([jsonRecommendationsMovies, jsonRecommendationsTv]);
+      //recommendations of movies
+      const recommendationsMovies = await fetch(`${mainUrl}/movie/${item.id}/similar?api_key=${apiKey}&language=en-US&page=2&with_genres=${item.id}`);
+      const jsonRecommendationsMovies = await recommendationsMovies.json();
+      setMoviesRecommendations([jsonRecommendationsMovies]);
 
+    } 
+    //for tv shows
+    else {
+      const tvWorkers = await fetch(`${mainUrl}/tv/${item.id}/credits?api_key=${apiKey}`);
+      const jsonTvWorkers = await tvWorkers.json();
+
+      setWorkersMovie([jsonTvWorkers]);
+      localStorage.setItem('actors', JSON.stringify([jsonTvWorkers]));
+
+      const categoryDetailTv = await fetch(`${mainUrl}/tv/${item.id}?api_key=${apiKey}`);
+      const jsonCategoryDetailTv = await categoryDetailTv.json();
+      setDetailCategory([jsonCategoryDetailTv]);
+
+      //recommendations of movies
+      const recommendationsTv = await fetch(`${mainUrl}/tv/${item.id}/similar?api_key=${apiKey}&language=en-US&page=2&with_genres=${item.id}`);
+      const jsonRecommendationsTv = await recommendationsTv.json();
+      setMoviesRecommendations([jsonRecommendationsTv]);
+    }
   }
 
   // Function that happen when you click on a category
