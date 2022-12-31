@@ -1,4 +1,29 @@
 export function useLocalStorage() {
+  const arrayCategories = [
+    {
+      "genres": [
+        { "id": 28, "name": "Action" },
+        { "id": 12, "name": "Adventure" },
+        { "id": 14, "name": "Fantasy" },
+        { "id": 878, "name": "Science Fiction" }
+      ]
+    }]
+
+  const arrayHeader = {
+    results:[{
+      id: 76600,
+      poster_path: "/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg",
+      title: "Avatar: The Way of Water"
+    }]
+  }
+
+ const arrayDiscoverMovies = {
+  results:[{
+    id: 675353,
+    poster_path: "/6DrHO1jr3qVrViUO6s6kFiAGM7.jpg",
+    title: "Sonic the Hedgehog 2"
+  }]
+ }
 
   // Description Page
   const localStorageDescription = localStorage.getItem('descriptionMovie');
@@ -14,25 +39,24 @@ export function useLocalStorage() {
   const localStorageActors = localStorage.getItem('actors');
   let actors;
 
-  if(!localStorageActors){
+  if (!localStorageActors) {
     localStorage.setItem('actors', JSON.stringify([]));
     actors = [];
-  }else{
+  } else {
     actors = JSON.parse(localStorageActors);
   }
 
   // List of Movies (SpecificCategory)
   const localStorageDiscover = localStorage.getItem('discover_v1');
   const localStorageDiscover2 = localStorage.getItem('discover_v2');
-
   let discoverStorage;
   let discoverStorage2;
 
   if (!localStorageDiscover) {
-    localStorage.setItem('discover_v1', JSON.stringify([]));
-    localStorage.setItem('discover_v2', JSON.stringify([]));
-    discoverStorage = [];
-    discoverStorage2 = [];
+    localStorage.setItem('discover_v1', JSON.stringify([arrayDiscoverMovies]));
+    localStorage.setItem('discover_v2', JSON.stringify([arrayDiscoverMovies]));
+    discoverStorage = [arrayDiscoverMovies];
+    discoverStorage2 = [arrayDiscoverMovies];
   } else {
     discoverStorage = JSON.parse(localStorageDiscover);
     discoverStorage2 = JSON.parse(localStorageDiscover2);
@@ -41,10 +65,10 @@ export function useLocalStorage() {
   const localStorageCategoryName = localStorage.getItem('categoryState');
   let categotyNameStorage;
 
-  if(!localStorageCategoryName){
+  if (!localStorageCategoryName) {
     localStorage.setItem('categoryState', JSON.stringify([]));
     categotyNameStorage = [];
-  }else{
+  } else {
     categotyNameStorage = JSON.parse(localStorageCategoryName);
   }
 
@@ -53,16 +77,15 @@ export function useLocalStorage() {
 
   const localStorageHeaderMovies = localStorage.getItem('headerMovies');
   const localStorageHeaderMovies2 = localStorage.getItem('headerMoviesTwo');
-
   let headerMoviesStorage;
   let headerMoviesStorage2;
 
-  if (!localStorageHeaderMovies) {
-    localStorage.setItem('headerMovies', JSON.stringify([{test:1}]));
-    localStorage.setItem('headerMoviesTwo', JSON.stringify([{test:1}]));
-    headerMoviesStorage = [{test:1}];
-    headerMoviesStorage2 = [{test:1}];
-  } else {
+  if(!localStorageHeaderMovies){
+    localStorage.setItem('headerMovies', JSON.stringify(arrayHeader));
+    localStorage.setItem('headerMoviesTwo', JSON.stringify(arrayHeader));
+    headerMoviesStorage = arrayHeader;
+    headerMoviesStorage2 = arrayHeader;
+  }else{
     headerMoviesStorage = JSON.parse(localStorageHeaderMovies);
     headerMoviesStorage2 = JSON.parse(localStorageHeaderMovies2);
   }
@@ -76,9 +99,9 @@ export function useLocalStorage() {
   } else {
     similarMovies = JSON.parse(localStorageSimilarMovies);
   }
-  
-  
-  localStorage.setItem('categories', JSON.stringify([{"genres":[{"id":28,"name":"Action"},{"id":12,"name":"Adventure"},{"id":14,"name":"Fantasy"},{"id":878,"name":"Science Fiction"}]}]));
+
+
+  localStorage.setItem('categories', JSON.stringify(arrayCategories));
   const localStorageCategories = localStorage.getItem('categories');
   let categoriesStorage = JSON.parse(localStorageCategories);
 

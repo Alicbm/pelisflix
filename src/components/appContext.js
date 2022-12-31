@@ -44,8 +44,6 @@ export function ContainerApp({ children }) {
 
   const [moviesRecommendations, setMoviesRecommendations] = React.useState(similarMovies);
 
-  // const navigate = useNavigate();
-
 
   // Function for the redirect to anothertypes of movies
   const headerPopular = async () => {
@@ -60,7 +58,6 @@ export function ContainerApp({ children }) {
 
     localStorage.setItem('headerMovies', JSON.stringify(jsonpopularOnePage));
     localStorage.setItem('headerMoviesTwo', JSON.stringify(jsonpopularTwoPage));
-    // navigate('/movie-header');
   }
   const headerNowPlaying = async () => {
     const nowPlayingOnePage = await fetch(mainUrl + '/movie/now_playing?api_key=' + apiKey + '&language=en-US&page=1');

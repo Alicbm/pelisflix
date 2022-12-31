@@ -7,6 +7,7 @@ import '../styles/categories.css'
 export function Categories(){
   const { selectOneCategory } = React.useContext(AppContext); 
   const { eachCategory } = useFunctionsJson();
+  console.log(eachCategory);
 
   return(
     <div className="categories-container">

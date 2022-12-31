@@ -6,7 +6,6 @@ import '../styles/carousel.css'
 export function Carousel({ array, title, }) {
   const { clickOneMovie } = React.useContext(AppContext);
 
-
   return (
     <div className="carousel-container">
       <div className='carousel-head'>
@@ -17,13 +16,13 @@ export function Carousel({ array, title, }) {
           array?.results.map(item => (
             <div
               className="carousel-content__item"
-              key={item.id}
+              key={item?.id}
             >
               <Link to='/description'>
                 <img
                   className="item-movie"
-                  src={`${process.env.REACT_APP_URL_IMAGE}${item.poster_path}`}
-                  alt={`${item.title || item.name}`}
+                  src={`${process.env.REACT_APP_URL_IMAGE}${item?.poster_path}`}
+                  alt={`${item?.title || item?.name}`}
                   onClick={() => clickOneMovie(item)}
                 />
               </Link>
