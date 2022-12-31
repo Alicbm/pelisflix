@@ -53,10 +53,10 @@ export function useLocalStorage() {
   let discoverStorage2;
 
   if (!localStorageDiscover) {
-    localStorage.setItem('discover_v1', JSON.stringify([arrayDiscoverMovies]));
-    localStorage.setItem('discover_v2', JSON.stringify([arrayDiscoverMovies]));
-    discoverStorage = [arrayDiscoverMovies];
-    discoverStorage2 = [arrayDiscoverMovies];
+    localStorage.setItem('discover_v1', JSON.stringify(arrayDiscoverMovies));
+    localStorage.setItem('discover_v2', JSON.stringify(arrayDiscoverMovies));
+    discoverStorage = arrayDiscoverMovies;
+    discoverStorage2 = arrayDiscoverMovies;
   } else {
     discoverStorage = JSON.parse(localStorageDiscover);
     discoverStorage2 = JSON.parse(localStorageDiscover2);
