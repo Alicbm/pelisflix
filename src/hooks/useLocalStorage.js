@@ -77,15 +77,10 @@ export function useLocalStorage() {
     similarMovies = JSON.parse(localStorageSimilarMovies);
   }
   
+  
+  localStorage.setItem('categories', JSON.stringify([{"genres":[{"id":28,"name":"Action"},{"id":12,"name":"Adventure"},{"id":14,"name":"Fantasy"},{"id":878,"name":"Science Fiction"}]}]));
   const localStorageCategories = localStorage.getItem('categories');
-  let categoriesStorage;
-
-  if (!localStorageCategories) {
-    localStorage.setItem('categories', JSON.stringify([]));
-    categoriesStorage = [{"genres":[{"id":28,"name":"Action"},{"id":12,"name":"Adventure"},{"id":14,"name":"Fantasy"},{"id":878,"name":"Science Fiction"}]}];
-  } else {
-    categoriesStorage = JSON.parse(localStorageCategories);
-  }
+  let categoriesStorage = JSON.parse(localStorageCategories);
 
   const localStorageMovieSearch = localStorage.getItem('movieSearchOne');
   const localStorageMovieSearch2 = localStorage.getItem('movieSearchTwo');
