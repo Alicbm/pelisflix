@@ -21,9 +21,7 @@ To create this application it was necessary to use the very famous [TheMovieDB](
 
 Another functionality that this app offers you is the possibility to see how the popularity of each movie is, you can see the overview of the movies, the actors who work in that movie, and you can see Similar Movies taking into account the movie that you have selected.
 
-However, here is a visual example for you to see the functionality of this app, I hope you like it. :grin:
-
-You have a visual example to see how the functionality of the application is, you just have to scroll down a bit:
+You have a visual example to see how the functionality of the application is, you just have to scroll down a bit: :grin:
 
 [![Todo App](https://raw.githubusercontent.com/Alicbm/pelisflix/master/src/gif/pelisflix.gif "Pelisflix")](https://github.com/Alicbm/pelisflix/blob/master/src/gif/pelisflix.gif "Pelisflix")
 
